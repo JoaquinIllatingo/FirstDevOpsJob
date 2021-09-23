@@ -1,5 +1,5 @@
 # aws -- version 
-# aws eks  --region us-east-1 update-kubeconfig --name aforo255-cluster
+# aws eks  --region us-east-2 update-kubeconfig --name aforo255-cluster
 # Uses default VPC  and Subnet. Create Your Own VPC and Private Subnets for 
 # terraform-backend-state-aforo255
 # AKIAXX4OA7XMEK5BV2GI   terraform-aws-user
@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
-    region = "us-east-1"
+    region = "us-east-2"
   }
 }
 
@@ -33,7 +33,7 @@ module "aforo255-clusterji" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "aforo255-clusterji"
   cluster_version = "1.17"
-  subnets         = [" subnet-35b66879", "subnet-c989feb3"]  #CHANGE # Donot choose subnet from us-east-1e
+  subnets         = [" subnet-35b66879", "subnet-c989feb3"]  #CHANGE # Donot choose subnet from us-east-2e
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
   #vpc_id         = "vpc-1234556abcdef" 
